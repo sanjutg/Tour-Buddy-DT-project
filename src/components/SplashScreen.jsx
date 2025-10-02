@@ -1,21 +1,37 @@
 // src/components/SplashScreen.jsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SplashScreen.css";
+import CompassLogo from "../assets/compass.png";
+import MapLogo from "../assets/map.png";
+import TourBuddyFont from "../assets/tourbuddy-font.png";
 
 export default function SplashScreen() {
   const navigate = useNavigate();
+  const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/role"); // redirect after 4 seconds
+    const redirectTimer = setTimeout(() => {
+      navigate("/role");
     }, 4000);
-    return () => clearTimeout(timer);
+
+    const animationTimer = setTimeout(() => {
+      setAnimationClass("animate-all");
+    }, 50);
+
+    return () => {
+      clearTimeout(redirectTimer);
+      clearTimeout(animationTimer);
+    };
   }, [navigate]);
 
   return (
     <div className="splash-container">
-      <h1 className="splash-title">🚍 TrackMyBus</h1>
+      <div className={`logo-container ${animationClass}`}>
+        <img src={TourBuddyFont} alt="TourBuddy Font" className="tourbuddy-font" />
+        <img src={CompassLogo} alt="Compass" className="compass" />
+        <img src={MapLogo} alt="Map" className="map" />
+      </div>
     </div>
   );
 }
