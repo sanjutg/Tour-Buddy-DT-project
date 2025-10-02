@@ -159,29 +159,13 @@ export default function AdminLogin() {
       </div>
 
       <div style={styles.rightSection}>
-        <h1 style={styles.formTitle}>Business Login</h1>
+        <h1 style={styles.formTitle}>Admin Login</h1>
         
         <input
           type="text"
-          placeholder="Business Name"
+          placeholder="Admin Name"
           value={businessName}
           onChange={(e) => setBusinessName(e.target.value)}
-          style={styles.inputField}
-        />
-
-        <input
-          type="text"
-          placeholder="Owner Name"
-          value={ownerName}
-          onChange={(e) => setOwnerName(e.target.value)}
-          style={styles.inputField}
-        />
-
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
           style={styles.inputField}
         />
 
@@ -200,23 +184,6 @@ export default function AdminLogin() {
           onChange={(e) => setPassword(e.target.value)}
           style={styles.inputField}
         />
-
-        <div style={styles.addressContainer}>
-          <input
-            type="text"
-            placeholder="Business Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            style={styles.addressInput}
-          />
-          <button
-            onClick={getLocation}
-            disabled={isGettingLocation}
-            style={styles.locationButton}
-          >
-            {isGettingLocation ? '📍...' : '📍'}
-          </button>
-        </div>
 
         <button onClick={handleLogin} style={styles.loginButton}>
           Login

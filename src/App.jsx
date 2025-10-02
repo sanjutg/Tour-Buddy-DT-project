@@ -23,7 +23,7 @@ function App() {
         <Route path="/role" element={<RoleScreen />} />
         <Route path="/userlogin" element={<UserLoginScreen />} />
         <Route path="/businessLogin" element={<BusinessLogin />} />
-        <Route path="/=adminLogin" element={<AdminLogin/>} />
+        <Route path="/adminLogin" element={<AdminLogin/>} />
 
         </Routes>
       )}
