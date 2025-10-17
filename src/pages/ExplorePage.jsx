@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -138,6 +138,157 @@ const ExplorePage = () => {
         </div>
 
         {renderContent()}
+      </div>
+    </>
+  );
+};
+
+export default ExplorePage;
+*/
+
+import React from "react";
+import Slider from "react-slick";
+import TravelCard from "../components/TravelCard";
+import GuideCard from "../components/GuideCard";
+import PackageCard from "../components/PackageCard";
+import { mockTravelAgencies, mockTourGuides, mockPackages } from "./MockData";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const ExplorePage = () => {
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: false,
+    responsive: [
+      { breakpoint: 1400, settings: { slidesToShow: 3 } },
+      { breakpoint: 1200, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  return (
+    <>
+      <style>{`
+        html, body, #root {
+          width: 100%;
+          min-width: 1200px; /* desktop-first */
+        }
+        .explore-container {
+          background-color: #fefdfd;
+          min-height: 100vh;
+          padding: 3rem 6rem;
+          box-sizing: border-box;
+          font-family: 'Inter', sans-serif;
+        }
+        .hero-banner {
+          background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80');
+          background-size: cover;
+          background-position: center;
+          border-radius: 12px;
+          height: 450px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: #fefdfd;
+          text-align: center;
+          margin-bottom: 4rem;
+          position: relative;
+        }
+        .hero-banner::after {
+          content: "";
+          position: absolute;
+          top:0; left:0;
+          width: 100%; height: 100%;
+          background-color: rgba(104,74,57,0.6);
+          border-radius: 12px;
+        }
+        .hero-title {
+          position: relative;
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          z-index: 2;
+        }
+        .hero-subtitle {
+          position: relative;
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+          z-index: 2;
+        }
+        .hero-button {
+          position: relative;
+          z-index: 2;
+          padding: 0.8rem 2.5rem;
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: white;
+          background-image: linear-gradient(135deg, #a08970, #857268);
+          border: none;
+          border-radius: 9999px;
+          cursor: pointer;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+        }
+        .hero-button:hover {
+          transform: scale(1.05);
+          box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+          background-color: #a08970;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #684a39;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Slick overrides */
+        .slick-slide { padding: 0 15px; box-sizing: border-box; }
+        .slick-dots li button:before { color: #a08970; }
+        .slick-dots li.slick-active button:before { color: #684a39; }
+        .slick-list { margin: 0 -15px; }
+        .slick-track { display: flex !important; }
+
+        @media (max-width: 1400px) { .explore-container { padding: 3rem 4rem; min-width: auto; } }
+        @media (max-width: 1024px) { .explore-container { padding: 2rem 3rem; } }
+        @media (max-width: 768px) {
+          .explore-container { padding: 1.5rem 1.5rem; }
+          .hero-title { font-size: 2rem; }
+          .hero-subtitle { font-size: 1rem; }
+        }
+      `}</style>
+
+      <div className="explore-container">
+        {/* HERO / Banner */}
+        <div className="hero-banner">
+          <h1 className="hero-title">Discover Your Next Adventure</h1>
+          <p className="hero-subtitle">Explore top travel agencies, tour guides, and exclusive packages.</p>
+          <button className="hero-button" onClick={() => window.location.href='/explore'}>Explore Now</button>
+        </div>
+
+        {/* Featured Travels */}
+        <h2 className="section-title">Featured Travel Agencies</h2>
+        <Slider {...sliderSettings}>
+          {mockTravelAgencies.map((agency) => <TravelCard key={agency.id} {...agency} />)}
+        </Slider>
+
+        {/* Top Tour Guides */}
+        <h2 className="section-title" style={{marginTop: "3rem"}}>Top Tour Guides</h2>
+        <Slider {...sliderSettings}>
+          {mockTourGuides.map((guide) => <GuideCard key={guide.id} {...guide} />)}
+        </Slider>
+
+        {/* Popular Packages */}
+        <h2 className="section-title" style={{marginTop: "3rem"}}>Popular Packages</h2>
+        <Slider {...sliderSettings}>
+          {mockPackages.map((pkg) => <PackageCard key={pkg.id} {...pkg} />)}
+        </Slider>
       </div>
     </>
   );
