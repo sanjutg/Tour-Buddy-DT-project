@@ -5,6 +5,8 @@ import RoleScreen from "./pages/Role.jsx";
 import UserLoginScreen from "./pages/UserLogin.jsx";
 import BusinessLogin from "./pages/BusinessLogin.jsx";
 import AdminLogin from "./pages/AdminLogin.jsx";
+import HomePage from "./pages/HomePage.jsx"; // <-- import homepage
+import ExplorePage from "./pages/ExplorePage.jsx";
 function App() {
   const [showSplash, setShowSplash] = useState(true);
 
@@ -19,11 +21,13 @@ function App() {
         <SplashScreen />
       ) : (
         <Routes>
-          <Route path="/" element={<SplashScreen />} />
-        <Route path="/role" element={<RoleScreen />} />
-        <Route path="/userlogin" element={<UserLoginScreen />} />
-        <Route path="/businessLogin" element={<BusinessLogin />} />
-        <Route path="/adminLogin" element={<AdminLogin/>} />
+          <Route path="/" element={<RoleScreen />} /> {/* default after splash */}
+          <Route path="/role" element={<RoleScreen />} />
+          <Route path="/userlogin" element={<UserLoginScreen />} />
+          <Route path="/businessLogin" element={<BusinessLogin />} />
+          <Route path="/adminLogin" element={<AdminLogin />} />
+          <Route path="/home" element={<HomePage />} /> {/* homepage route */}
+          <Route path="/explore" element={<ExplorePage />} />
 
         </Routes>
       )}

@@ -1,9 +1,10 @@
 // src/components/UserLoginScreen.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import bgAnim from "../assets/bg.json";
 
-export default function UserLogin() {
+export default function UserLoginScreen() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -11,8 +12,11 @@ export default function UserLogin() {
   const [address, setAddress] = useState('');
   const [isGettingLocation, setIsGettingLocation] = useState(false);
 
+  const navigate = useNavigate(); // <-- add navigate
+
   const handleLogin = () => {
     alert(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nPassword: ${password}\nAddress: ${address}`);
+    navigate("/home"); // <-- redirect to homepage
   };
 
   const getLocation = () => {
@@ -20,13 +24,10 @@ export default function UserLogin() {
       alert('Geolocation is not supported by this browser.');
       return;
     }
-
     setIsGettingLocation(true);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        
-        // Reverse geocoding using OpenStreetMap Nominatim API (free)
         fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
           .then(response => response.json())
           .then(data => {
@@ -146,7 +147,7 @@ export default function UserLogin() {
     }
   };
 
-  return (
+    return (
     <div style={styles.loginContainer}>
       <div style={styles.leftSection}>
         <h2 style={styles.userTitle}>
