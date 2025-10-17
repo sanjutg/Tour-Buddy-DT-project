@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SplashScreen.css";
-import CompassLogo from "../assets/compass.png";
-import MapLogo from "../assets/map.png";
 import TourBuddyFont from "../assets/tourbuddy-font.png";
 
 export default function SplashScreen() {
@@ -29,8 +27,7 @@ export default function SplashScreen() {
     <div className="splash-container">
       <div className={`logo-container ${animationClass}`}>
         <img src={TourBuddyFont} alt="TourBuddy Font" className="tourbuddy-font" />
-        <img src={CompassLogo} alt="Compass" className="compass" />
-        <img src={MapLogo} alt="Map" className="map" />
+    
       </div>
     </div>
   );

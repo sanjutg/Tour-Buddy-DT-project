@@ -159,7 +159,7 @@ export default function BusinessLogin() {
       </div>
 
       <div style={styles.rightSection}>
-        <h1 style={styles.formTitle}>Business Login</h1>
+        <h1 style={styles.formTitle}>Business Register</h1>
         
         <input
           type="text"
@@ -219,7 +219,7 @@ export default function BusinessLogin() {
         </div>
 
         <button onClick={handleLogin} style={styles.loginButton}>
-          Login
+          Registor Now!!!
         </button>
       </div>
     </div>
