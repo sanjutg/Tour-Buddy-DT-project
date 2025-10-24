@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
@@ -45,5 +47,5 @@
   "bugs": {
     "url": "https://github.com/sanjutg/Tour-Buddy-DT-project/issues"
   },
-  "homepage": "https://github.com/sanjutg/Tour-Buddy-DT-project#readme"
+  "homepage": "https://sanjutg.github.io/Tour-Buddy-DT-project/"
 }
