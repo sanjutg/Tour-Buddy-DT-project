@@ -3,6 +3,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  base: '/Tour-Buddy-DT-project/',
   plugins: [react()],
-  base: '/Tour-Buddy-DT-project/', // Replace repo-name with your GitHub repo name
 });
